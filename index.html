@@ -4,46 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colton Wirth | Technical Program Manager</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #06080c;
-            --bg-secondary: #0c1017;
-            --bg-tertiary: #111620;
-            --bg-card: #0f1319;
-            --text-primary: #e8eaed;
-            --text-secondary: #8892a4;
-            --accent: #4af5c7;
-            --accent-blue: #3b82f6;
-            --accent-dim: #1a6b52;
-            --accent-glow: rgba(74, 245, 199, 0.15);
-            --border: #1e2533;
-            --border-hover: #2a3548;
-            --gradient-1: linear-gradient(135deg, #4af5c7 0%, #3b82f6 100%);
-            --gradient-2: linear-gradient(135deg, rgba(74, 245, 199, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #181818;
+            --bg-card: #141414;
+            --text-primary: #f0f0f0;
+            --text-secondary: #909090;
+            --text-dim: #606060;
+            --accent: #00d4aa;
+            --accent-bright: #00ffcc;
+            --accent-dim: #008c73;
+            --accent-glow: rgba(0, 212, 170, 0.15);
+            --border: #222222;
+            --border-hover: #333333;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Work Sans', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         ::selection {
-            background: rgba(74, 245, 199, 0.3);
-            color: #fff;
+            background: var(--accent);
+            color: var(--bg-primary);
         }
 
-        /* ── Nav ── */
+        /* ── Navigation ── */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(6, 8, 12, 0.9);
+            background: rgba(10, 10, 10, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -53,20 +53,17 @@
         .nav-container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
+            padding: 1.25rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'DM Serif Display', serif;
             font-size: 1.4rem;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent);
+            font-style: italic;
             letter-spacing: -0.5px;
         }
 
@@ -80,8 +77,9 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.88rem;
-            letter-spacing: 0.3px;
+            font-size: 0.85rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
             transition: color 0.3s ease;
         }
 
@@ -92,52 +90,38 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 2.5rem;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
+            animation: heroGlow 10s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        .hero-bg .orb {
+        .hero::after {
+            content: '';
             position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            animation: orbFloat 12s ease-in-out infinite alternate;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.06) 0%, transparent 65%);
+            animation: heroGlow 10s ease-in-out 5s infinite;
+            pointer-events: none;
         }
 
-        .hero-bg .orb-1 {
-            width: 600px; height: 600px;
-            background: rgba(74, 245, 199, 0.08);
-            top: -10%; right: -5%;
-        }
-
-        .hero-bg .orb-2 {
-            width: 400px; height: 400px;
-            background: rgba(59, 130, 246, 0.06);
-            bottom: 10%; left: -5%;
-            animation-delay: -4s;
-        }
-
-        .hero-bg .grid-pattern {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(74, 245, 199, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 245, 199, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
-        }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, -20px) scale(1.1); }
+        @keyframes heroGlow {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
         }
 
         .hero-content {
@@ -145,131 +129,96 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
-            padding-top: 80px;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.5rem 1.2rem;
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.82rem;
+        .hero-label {
             color: var(--accent);
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 2rem;
-            background: rgba(74, 245, 199, 0.04);
-            animation: fadeInUp 0.7s ease-out;
-        }
-
-        .hero-badge .dot {
-            width: 6px; height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.7s ease-out;
         }
 
         .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3.2rem, 7.5vw, 5.8rem);
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
             line-height: 1.08;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -2px;
-            animation: fadeInUp 0.7s ease-out 0.15s backwards;
+            margin-bottom: 1.75rem;
+            font-style: italic;
+            letter-spacing: -1px;
+            animation: fadeUp 0.7s ease-out 0.15s backwards;
         }
 
-        .hero-title .highlight {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-style: italic;
-        }
+        .hero-title .accent { color: var(--accent); }
 
         .hero-subtitle {
             font-size: clamp(1.05rem, 1.8vw, 1.3rem);
             color: var(--text-secondary);
             max-width: 680px;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             font-weight: 300;
             line-height: 1.8;
-            animation: fadeInUp 0.7s ease-out 0.3s backwards;
+            animation: fadeUp 0.7s ease-out 0.3s backwards;
         }
 
         .hero-stats {
             display: flex;
-            gap: 3rem;
+            gap: 3.5rem;
             margin-bottom: 3rem;
-            animation: fadeInUp 0.7s ease-out 0.4s backwards;
+            animation: fadeUp 0.7s ease-out 0.45s backwards;
         }
 
-        .hero-stat {
-            text-align: left;
-        }
-
-        .hero-stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
+        .hero-stat-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent);
+            font-style: italic;
+            line-height: 1;
         }
 
         .hero-stat-label {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            letter-spacing: 0.3px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 0.35rem;
+            letter-spacing: 0.5px;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1.2rem;
-            animation: fadeInUp 0.7s ease-out 0.5s backwards;
+            gap: 1.25rem;
+            animation: fadeUp 0.7s ease-out 0.6s backwards;
         }
 
         .btn {
             padding: 0.9rem 2.2rem;
             border: none;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: 0.3px;
-            border-radius: 6px;
-            font-family: 'Outfit', sans-serif;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            font-family: 'Work Sans', sans-serif;
         }
 
         .btn-primary {
-            background: var(--gradient-1);
+            background: var(--accent);
             color: var(--bg-primary);
         }
 
         .btn-primary:hover {
+            background: var(--accent-bright);
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(74, 245, 199, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.25);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
-            border: 1.5px solid var(--border);
+            border: 1.5px solid var(--border-hover);
         }
 
         .btn-secondary:hover {
@@ -278,7 +227,7 @@
             transform: translateY(-2px);
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeUp {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -287,25 +236,23 @@
         .section-header {
             max-width: 1300px;
             margin: 0 auto 4.5rem;
+            text-align: center;
         }
 
         .section-label {
-            font-size: 0.78rem;
-            letter-spacing: 3px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 0.75rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -1px;
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-style: italic;
+            letter-spacing: -0.5px;
             margin-bottom: 0.75rem;
         }
 
@@ -313,172 +260,124 @@
             color: var(--text-secondary);
             font-size: 1.05rem;
             max-width: 600px;
-            font-weight: 300;
+            margin: 0 auto;
         }
 
         /* ── Projects ── */
         .projects {
-            padding: 7rem 2rem;
+            padding: 7rem 2.5rem;
             background: var(--bg-secondary);
-            position: relative;
-        }
-
-        .projects::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
         }
 
         .projects-grid {
             max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            gap: 3rem;
+            gap: 3.5rem;
         }
 
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
             padding: 3rem;
-            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            transition: border-color 0.4s ease;
         }
 
-        .project-card::after {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-1);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            width: 3px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.5s ease;
         }
 
-        .project-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
+        .project-card:hover { border-color: var(--border-hover); }
+        .project-card:hover::before { height: 100%; }
 
-        .project-card:hover::after { opacity: 1; }
-
-        .project-header {
-            margin-bottom: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .project-header-left { flex: 1; }
+        .project-header { margin-bottom: 2.5rem; }
 
         .project-number {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.9rem;
+            color: var(--accent);
             margin-bottom: 0.5rem;
+            font-style: italic;
         }
 
         .project-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-style: italic;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
         }
 
         .project-meta {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
         }
 
-        .project-role-tag {
-            display: inline-flex;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            background: var(--gradient-2);
-            border: 1px solid rgba(74, 245, 199, 0.15);
+        .project-role {
+            display: inline-block;
             color: var(--accent);
-            white-space: nowrap;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
         }
 
-        .project-section {
-            margin-bottom: 2.5rem;
-        }
-
+        .project-section { margin-bottom: 2.5rem; }
         .project-section:last-child { margin-bottom: 0; }
 
         .project-section-title {
             font-size: 0.72rem;
             letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: var(--text-secondary);
+            color: var(--accent);
             margin-bottom: 1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .project-section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
+            font-weight: 600;
         }
 
         .problem-text {
             font-size: 1.05rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             line-height: 1.85;
+            max-width: 900px;
         }
 
         .deliverables-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .deliverable-item {
-            background: rgba(255,255,255,0.02);
-            padding: 1.4rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-left: 2px solid var(--accent-dim);
             transition: all 0.3s ease;
         }
 
         .deliverable-item:hover {
-            border-color: rgba(74, 245, 199, 0.2);
-            background: rgba(74, 245, 199, 0.03);
-            transform: translateY(-2px);
+            border-left-color: var(--accent);
+            transform: translateX(4px);
         }
 
         .deliverable-icon {
-            font-size: 1.3rem;
-            margin-bottom: 0.6rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .deliverable-title {
             font-weight: 600;
             margin-bottom: 0.4rem;
-            color: var(--text-primary);
             font-size: 0.95rem;
         }
 
@@ -488,156 +387,126 @@
             line-height: 1.6;
         }
 
-        .outcomes-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        /* ── Agent Architecture (Project 1 only) ── */
+        .agent-arch {
+            margin-bottom: 2.5rem;
         }
 
-        .outcome-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.02);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .outcome-metric {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            min-width: fit-content;
-        }
-
-        .outcome-description { padding-top: 0.25rem; }
-
-        .outcome-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            font-size: 0.95rem;
-        }
-
-        .outcome-detail {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        /* ── Agent Architecture ── */
-        .agent-architecture {
+        .agent-flow {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
+            gap: 1.25rem;
             position: relative;
         }
 
-        .agent-architecture::before {
+        .agent-flow::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-1);
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-dim));
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .agent-card {
-            padding: 2rem 1.75rem;
-            border-right: 1px solid var(--border);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.75rem;
             position: relative;
-            background: rgba(255,255,255,0.01);
-            transition: all 0.3s ease;
+            z-index: 1;
+            transition: border-color 0.3s ease;
         }
 
-        .agent-card:last-child { border-right: none; }
-
-        .agent-card:hover {
-            background: rgba(74, 245, 199, 0.03);
-        }
+        .agent-card:hover { border-color: var(--accent-dim); }
 
         .agent-step {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            color: var(--bg-primary);
-            font-size: 0.78rem;
-            font-weight: 700;
-            margin-bottom: 0.9rem;
-        }
-
-        .agent-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            font-style: italic;
+            line-height: 1;
             margin-bottom: 0.5rem;
         }
 
-        .agent-role {
-            font-size: 0.8rem;
+        .agent-name {
             font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.85rem;
-            text-transform: uppercase;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
         }
 
-        .agent-desc {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
+        .agent-subtitle {
+            color: var(--accent-dim);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
-        .agent-capabilities {
+        .agent-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        .agent-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.4rem;
         }
 
-        .agent-cap-tag {
-            font-size: 0.72rem;
+        .agent-tag {
             padding: 0.3rem 0.65rem;
-            border-radius: 4px;
-            background: rgba(74, 245, 199, 0.08);
-            border: 1px solid rgba(74, 245, 199, 0.12);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            letter-spacing: 0.3px;
+        }
+
+        /* ── Outcomes ── */
+        .outcomes-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .outcome-item {
+            display: flex;
+            align-items: start;
+            gap: 1.75rem;
+        }
+
+        .outcome-metric {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
             color: var(--accent);
-            font-weight: 500;
+            font-style: italic;
+            line-height: 1;
+            min-width: 120px;
         }
 
-        .agent-flow-arrow {
-            display: none;
+        .outcome-description { padding-top: 0.4rem; }
+
+        .outcome-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 900px) {
-            .agent-architecture {
-                grid-template-columns: 1fr;
-            }
-            .agent-card {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-            .agent-card:last-child { border-bottom: none; }
+        .outcome-detail {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         /* ── Skills ── */
         .skills {
-            padding: 7rem 2rem;
+            padding: 7rem 2.5rem;
             background: var(--bg-primary);
-            position: relative;
         }
 
         .skills-container {
@@ -653,154 +522,59 @@
         }
 
         .skill-category {
-            background: var(--bg-card);
-            padding: 2rem;
+            background: var(--bg-tertiary);
+            padding: 2.25rem;
             border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
         }
 
-        .skill-category:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
+        .skill-category:hover { border-color: var(--border-hover); }
 
-        .skill-category-icon {
+        .skill-icon {
             font-size: 1.5rem;
             margin-bottom: 0.75rem;
         }
 
         .skill-category-title {
             font-size: 1.1rem;
-            margin-bottom: 1.25rem;
-            font-weight: 700;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .skill-proof {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
         .skill-tag {
             padding: 0.4rem 0.85rem;
-            background: rgba(255,255,255,0.04);
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
-            background: rgba(74, 245, 199, 0.1);
-            color: var(--accent);
-            border-color: rgba(74, 245, 199, 0.25);
-        }
-
-        /* ── Timeline ── */
-        .timeline {
-            padding: 7rem 2rem;
-            background: var(--bg-secondary);
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
-        }
-
-        .timeline-container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .timeline-grid {
-            margin-top: 2.5rem;
-            display: grid;
-            gap: 0;
-            position: relative;
-        }
-
-        .timeline-grid::before {
-            content: '';
-            position: absolute;
-            left: 24px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 50px 1fr;
-            gap: 1.5rem;
-            padding-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .timeline-item:last-child { padding-bottom: 0; }
-
-        .timeline-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
             background: var(--accent);
-            border: 3px solid var(--bg-secondary);
-            position: relative;
-            top: 6px;
-            left: 19px;
-            z-index: 1;
-            box-shadow: 0 0 0 4px rgba(74, 245, 199, 0.15);
-        }
-
-        .timeline-item:not(:first-child) .timeline-dot {
-            background: var(--border-hover);
-            box-shadow: none;
-        }
-
-        .timeline-content {}
-
-        .timeline-date {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-role {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.15rem;
-        }
-
-        .timeline-company {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.6rem;
-        }
-
-        .timeline-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
+            color: var(--bg-primary);
+            border-color: var(--accent);
         }
 
         /* ── Contact ── */
         .contact {
-            padding: 7rem 2rem;
-            background: var(--bg-primary);
+            padding: 7rem 2.5rem;
+            background: var(--bg-secondary);
             text-align: center;
-            position: relative;
         }
 
         .contact-container {
@@ -809,75 +583,96 @@
         }
 
         .contact-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 1.25rem;
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
         }
 
         .contact-text {
             font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
-            font-weight: 300;
             line-height: 1.8;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
         .contact-link {
-            padding: 0.85rem 1.8rem;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
+            padding: 0.9rem 2rem;
+            background: transparent;
+            border: 1.5px solid var(--accent-dim);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.92rem;
         }
 
         .contact-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
             border-color: var(--accent);
-            color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(74, 245, 199, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.2);
         }
 
         /* ── Footer ── */
         footer {
-            background: var(--bg-secondary);
-            padding: 2rem;
+            background: var(--bg-primary);
+            padding: 2rem 2.5rem;
             text-align: center;
             border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
         }
 
         /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .agent-flow {
+                grid-template-columns: 1fr;
+            }
+            .agent-flow::before { display: none; }
+        }
+
         @media (max-width: 768px) {
+            .nav-container { padding: 1rem 1.5rem; }
             .nav-links { gap: 1.5rem; }
-            .hero { min-height: 90vh; }
+            .nav-links a { font-size: 0.78rem; }
+            .hero { min-height: 85vh; padding: 0 1.5rem; }
             .hero-stats { gap: 2rem; flex-wrap: wrap; }
             .hero-cta { flex-direction: column; }
-            .btn { text-align: center; justify-content: center; }
+            .btn { text-align: center; }
+            .projects { padding: 5rem 1.5rem; }
             .project-card { padding: 2rem; }
-            .project-title { font-size: 1.7rem; }
             .deliverables-grid { grid-template-columns: 1fr; }
-            .outcomes-list { grid-template-columns: 1fr; }
+            .outcome-item { flex-direction: column; gap: 0.5rem; }
+            .outcome-metric { min-width: auto; font-size: 2.2rem; }
+            .skills { padding: 5rem 1.5rem; }
             .skills-grid { grid-template-columns: 1fr; }
-            .timeline-grid::before { left: 18px; }
-            .timeline-dot { left: 13px; }
-            .timeline-item { grid-template-columns: 40px 1fr; }
-            .project-header { flex-direction: column; }
+            .contact { padding: 5rem 1.5rem; }
+        }
+
+        /* ── Scroll Animations ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -889,7 +684,6 @@
             <div class="logo">Colton Wirth</div>
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -898,35 +692,27 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-bg">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="grid-pattern"></div>
-        </div>
         <div class="hero-content">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Technical Program Manager
-            </div>
-            <h1 class="hero-title">Building the future of<br><span class="highlight">AI Operations</span></h1>
-            <p class="hero-subtitle">Principal TPM at Oracle leading 50+ engineers to build autonomous AI platforms that detect, diagnose, and remediate enterprise infrastructure issues—before customers notice.</p>
+            <div class="hero-label">Technical Program Manager</div>
+            <h1 class="hero-title">Shipping <span class="accent">AI programs</span><br>from zero to production</h1>
+            <p class="hero-subtitle">Principal TPM who builds AI systems — not just manages them. 8+ years leading cross-functional teams of 50+ engineers to deliver ML platforms, agentic architectures, and infrastructure programs at enterprise scale. Looking for high-velocity teams where AI ships fast and reliability isn't optional.</p>
             <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">6+</div>
+                <div>
+                    <div class="hero-stat-value">8+</div>
                     <div class="hero-stat-label">Years of Experience</div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">99.97%</div>
-                    <div class="hero-stat-label">System Availability</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">50+</div>
+                <div>
+                    <div class="hero-stat-value">50+</div>
                     <div class="hero-stat-label">Engineers Led</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value">99.99%</div>
+                    <div class="hero-stat-label">System Availability</div>
                 </div>
             </div>
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">View Case Studies →</a>
-                <a href="Colton_Wirth_Resume.docx" class="btn btn-secondary" download>Download Resume</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
     </section>
@@ -936,25 +722,23 @@
         <div class="section-header">
             <div class="section-label">Case Studies</div>
             <h2 class="section-title">Programs That Moved the Needle</h2>
-            <p class="section-description">Strategic initiatives spanning AI, infrastructure, and process—each with measurable business impact.</p>
+            <p class="section-description">Strategic initiatives spanning AI, ML infrastructure, and reliability—each with measurable business impact.</p>
         </div>
 
         <div class="projects-grid">
 
-            <!-- Project 1: AI Operations Platform -->
-            <article class="project-card">
+            <!-- ═══ Project 1: AI Operations Platform ═══ -->
+            <article class="project-card reveal">
                 <div class="project-header">
-                    <div class="project-header-left">
-                        <div class="project-number">Project 01</div>
-                        <h3 class="project-title">AI Operations Platform</h3>
-                        <div class="project-meta">Oracle SaaS • Ongoing • 50+ Engineers</div>
-                    </div>
-                    <div class="project-role-tag">Principal TPM</div>
+                    <div class="project-number">Project 01</div>
+                    <h3 class="project-title">AI Operations Platform</h3>
+                    <div class="project-meta">Oracle SaaS • Ongoing • 50+ Engineers</div>
+                    <div class="project-role">Principal TPM</div>
                 </div>
 
                 <div class="project-section">
                     <h4 class="project-section-title">Challenge</h4>
-                    <p class="problem-text">Oracle's SaaS platform relied on manual, reactive incident response—engineers were paged after customers were already impacted. With Fusion Applications built as a monolith, root cause analysis was slow, failures were deeply coupled, and remediation was inconsistent. The organization needed a paradigm shift from reactive firefighting to autonomous, predictive operations at enterprise scale.</p>
+                    <p class="problem-text">Enterprise SaaS operations relied on reactive, manual incident response—engineers paged after customers were already impacted. Root cause analysis was slow across tightly coupled systems, remediation was inconsistent, and operations headcount was scaling linearly with platform growth. The organization needed a fundamental shift from reactive firefighting to autonomous, predictive operations.</p>
                 </div>
 
                 <div class="project-section">
@@ -962,64 +746,62 @@
                     <div class="deliverables-grid">
                         <div class="deliverable-item">
                             <div class="deliverable-icon">🧠</div>
-                            <div class="deliverable-title">Multi-Agent AI Architecture</div>
-                            <div class="deliverable-desc">Designed a system of autonomous agents combining deep learning, graph-based root cause analysis, and custom LLMs for multistep remediation decisions.</div>
+                            <div class="deliverable-title">Multi-Agent Architecture</div>
+                            <div class="deliverable-desc">Designed an autonomous system combining deep learning, graph-based root cause analysis, and custom LLMs for multi-step remediation.</div>
                         </div>
                         <div class="deliverable-item">
                             <div class="deliverable-icon">🔗</div>
                             <div class="deliverable-title">Custom LLM Pipeline</div>
-                            <div class="deliverable-desc">Engineered RAG, SFT, and CPT capabilities integrated with MCP servers for context-aware remediation across enterprise infrastructure.</div>
-                        </div>
-                        <div class="deliverable-item">
-                            <div class="deliverable-icon">📊</div>
-                            <div class="deliverable-title">Platform Roadmap & Strategy</div>
-                            <div class="deliverable-desc">Led TPM and PM functions, aligning multiple AI initiatives and presenting long-term platform vision to Oracle senior leadership.</div>
+                            <div class="deliverable-desc">Engineered RAG, SFT, and CPT capabilities integrated with MCP servers for context-aware remediation decisions.</div>
                         </div>
                         <div class="deliverable-item">
                             <div class="deliverable-icon">⚡</div>
                             <div class="deliverable-title">Auto-Remediation Engine</div>
-                            <div class="deliverable-desc">Built autonomous workflows that detect, triage, and resolve infrastructure issues without human intervention.</div>
+                            <div class="deliverable-desc">Built autonomous workflows that detect, triage, and resolve production issues without human intervention.</div>
+                        </div>
+                        <div class="deliverable-item">
+                            <div class="deliverable-icon">📊</div>
+                            <div class="deliverable-title">Executive Dashboard & Rollout</div>
+                            <div class="deliverable-desc">Cross-team rollout plan with real-time metrics for leadership visibility into platform performance and adoption.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-section">
+                <!-- Agent Architecture Deep Dive -->
+                <div class="project-section agent-arch">
                     <h4 class="project-section-title">Agent Architecture</h4>
-                    <div class="agent-architecture">
+                    <div class="agent-flow">
                         <div class="agent-card">
                             <div class="agent-step">1</div>
-                            <div class="agent-name">System State Agent</div>
-                            <div class="agent-role">Observe & Diagnose</div>
-                            <div class="agent-desc">Continuously monitors the health of Fusion Applications by aggregating signals from logs, metrics, alerts, and topology graphs. Uses deep learning models and graph-based root cause analysis to pinpoint the origin of anomalies across tightly coupled monolithic components—turning noisy, correlated symptoms into a single actionable diagnosis.</div>
-                            <div class="agent-capabilities">
-                                <span class="agent-cap-tag">Anomaly Detection</span>
-                                <span class="agent-cap-tag">Graph-Based RCA</span>
-                                <span class="agent-cap-tag">Telemetry Aggregation</span>
-                                <span class="agent-cap-tag">Health Scoring</span>
+                            <div class="agent-name">Detect Agent</div>
+                            <div class="agent-subtitle">Observe & Diagnose</div>
+                            <div class="agent-desc">Continuously monitors system health by aggregating signals from logs, metrics, alerts, and topology graphs. Uses deep learning and graph-based root cause analysis to pinpoint anomaly origins across coupled components.</div>
+                            <div class="agent-tags">
+                                <span class="agent-tag">Anomaly Detection</span>
+                                <span class="agent-tag">Graph-Based RCA</span>
+                                <span class="agent-tag">Telemetry Aggregation</span>
                             </div>
                         </div>
                         <div class="agent-card">
                             <div class="agent-step">2</div>
-                            <div class="agent-name">Decision Agent</div>
-                            <div class="agent-role">Reason & Plan</div>
-                            <div class="agent-desc">Receives the diagnosed system state and determines the optimal remediation strategy. Powered by custom LLMs fine-tuned via RAG, SFT, and CPT on Oracle's operational knowledge base, this agent evaluates risk, blast radius, and historical outcomes to select the safest, most effective action plan—routing to auto-remediation or human escalation as appropriate.</div>
-                            <div class="agent-capabilities">
-                                <span class="agent-cap-tag">Custom LLM (RAG/SFT/CPT)</span>
-                                <span class="agent-cap-tag">MCP Server Integration</span>
-                                <span class="agent-cap-tag">Risk Assessment</span>
-                                <span class="agent-cap-tag">Escalation Logic</span>
+                            <div class="agent-name">Reason Agent</div>
+                            <div class="agent-subtitle">Analyze & Plan</div>
+                            <div class="agent-desc">Receives the diagnosed state and determines optimal remediation. Powered by custom LLMs fine-tuned via RAG, SFT, and CPT, this agent evaluates risk, blast radius, and historical outcomes to select the safest action plan.</div>
+                            <div class="agent-tags">
+                                <span class="agent-tag">Custom LLM (RAG/SFT/CPT)</span>
+                                <span class="agent-tag">MCP Integration</span>
+                                <span class="agent-tag">Risk Assessment</span>
                             </div>
                         </div>
                         <div class="agent-card">
                             <div class="agent-step">3</div>
                             <div class="agent-name">Action Agent</div>
-                            <div class="agent-role">Execute & Verify</div>
-                            <div class="agent-desc">Executes the remediation plan through automated runbooks and infrastructure commands—restarting services, rerouting traffic, scaling resources, or applying configuration fixes. After execution, it validates the system has returned to a healthy state and closes the loop back to the System State Agent for continuous monitoring.</div>
-                            <div class="agent-capabilities">
-                                <span class="agent-cap-tag">Automated Runbooks</span>
-                                <span class="agent-cap-tag">Self-Healing Workflows</span>
-                                <span class="agent-cap-tag">Post-Action Validation</span>
-                                <span class="agent-cap-tag">Closed-Loop Feedback</span>
+                            <div class="agent-subtitle">Execute & Verify</div>
+                            <div class="agent-desc">Executes remediation through automated runbooks—restarting services, rerouting traffic, scaling resources. Validates recovery and closes the loop back to the Detect Agent for continuous monitoring.</div>
+                            <div class="agent-tags">
+                                <span class="agent-tag">Automated Runbooks</span>
+                                <span class="agent-tag">Self-Healing</span>
+                                <span class="agent-tag">Closed-Loop Feedback</span>
                             </div>
                         </div>
                     </div>
@@ -1029,68 +811,59 @@
                     <h4 class="project-section-title">Impact</h4>
                     <div class="outcomes-list">
                         <div class="outcome-item">
-                            <div class="outcome-metric">40%</div>
+                            <div class="outcome-metric">50%</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Autonomous Issue Detection</div>
-                                <div class="outcome-detail">Platform now detects 40% of customer-facing issues before they escalate, shifting operations from reactive to proactive.</div>
+                                <div class="outcome-title">Production Issues Auto-Remediated</div>
+                                <div class="outcome-detail">Half of all detected production issues now resolved autonomously without human intervention.</div>
                             </div>
                         </div>
                         <div class="outcome-item">
-                            <div class="outcome-metric">20%</div>
+                            <div class="outcome-metric">50%</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Auto-Remediated Incidents</div>
-                                <div class="outcome-detail">One in five detected issues is now resolved without any human intervention.</div>
-                            </div>
-                        </div>
-                        <div class="outcome-item">
-                            <div class="outcome-metric">150+</div>
-                            <div class="outcome-description">
-                                <div class="outcome-title">Engineering Hours Saved Monthly</div>
-                                <div class="outcome-detail">Freed up engineering capacity from manual ops work, redirected to product innovation.</div>
+                                <div class="outcome-title">Operations Headcount Reduction</div>
+                                <div class="outcome-detail">Autonomous platform cut the operations staffing needed in half, redirecting capacity to product innovation.</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- Project 2: Chaos Engineering Program -->
-            <article class="project-card">
+            <!-- ═══ Project 2: ML Infrastructure Platform ═══ -->
+            <article class="project-card reveal">
                 <div class="project-header">
-                    <div class="project-header-left">
-                        <div class="project-number">Project 02</div>
-                        <h3 class="project-title">Chaos Engineering Program</h3>
-                        <div class="project-meta">Oracle SaaS • 12+ months • Cross-Functional</div>
-                    </div>
-                    <div class="project-role-tag">Senior TPM</div>
+                    <div class="project-number">Project 02</div>
+                    <h3 class="project-title">ML Infrastructure Platform</h3>
+                    <div class="project-meta">Oracle AI/ML • 12+ months • Cross-Functional</div>
+                    <div class="project-role">Senior TPM</div>
                 </div>
 
                 <div class="project-section">
                     <h4 class="project-section-title">Challenge</h4>
-                    <p class="problem-text">Oracle SaaS applications lacked systematic resilience testing. High-severity incidents were increasingly caused by failure modes that only surfaced in production—dependencies failing silently, cascading timeouts, and resource exhaustion under load. Without a structured way to proactively find these weaknesses, the team was always one step behind.</p>
+                    <p class="problem-text">Data scientists and ML engineers were bottlenecked by fragmented infrastructure—no shared datalake, no feature store, and ad-hoc model delivery pipelines that took 3 months from prototype to production. Every new deep learning model required custom infrastructure work, blocking the AI roadmap and creating unsustainable overhead as the organization scaled its ML ambitions.</p>
                 </div>
 
                 <div class="project-section">
                     <h4 class="project-section-title">What I Delivered</h4>
                     <div class="deliverables-grid">
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">💥</div>
-                            <div class="deliverable-title">Chaos Engineering Framework</div>
-                            <div class="deliverable-desc">Designed and launched an end-to-end chaos testing program for SaaS applications with structured experiment playbooks.</div>
-                        </div>
-                        <div class="deliverable-item">
                             <div class="deliverable-icon">🏗️</div>
-                            <div class="deliverable-title">Dedicated Test Region</div>
-                            <div class="deliverable-desc">Secured multi-million-dollar investment for a dedicated Chaos testing region, eliminating risk to production workloads.</div>
+                            <div class="deliverable-title">Platform Architecture & Roadmap</div>
+                            <div class="deliverable-desc">End-to-end ML platform design spanning datalake, feature store, training pipelines, and model serving infrastructure.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">🛡️</div>
-                            <div class="deliverable-title">Degraded-State Strategy</div>
-                            <div class="deliverable-desc">Built prioritization model ensuring core customer-facing features remain operational during partial system disruptions.</div>
+                            <div class="deliverable-icon">📦</div>
+                            <div class="deliverable-title">Feature Store Design</div>
+                            <div class="deliverable-desc">Centralized feature repository enabling reuse across models, reducing duplicate data engineering and improving consistency.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">📈</div>
-                            <div class="deliverable-title">Automated Failure Handling</div>
-                            <div class="deliverable-desc">Implemented automated recovery across critical application flows, eliminating manual intervention for common failure scenarios.</div>
+                            <div class="deliverable-icon">🔄</div>
+                            <div class="deliverable-title">CI/CD for Model Deployment</div>
+                            <div class="deliverable-desc">Automated pipelines for model training, validation, and production deployment—replacing manual handoffs with repeatable workflows.</div>
+                        </div>
+                        <div class="deliverable-item">
+                            <div class="deliverable-icon">🤝</div>
+                            <div class="deliverable-title">Cross-Team Alignment</div>
+                            <div class="deliverable-desc">Stakeholder alignment across data science, ML engineering, and infrastructure teams to drive unified platform adoption.</div>
                         </div>
                     </div>
                 </div>
@@ -1099,44 +872,35 @@
                     <h4 class="project-section-title">Impact</h4>
                     <div class="outcomes-list">
                         <div class="outcome-item">
-                            <div class="outcome-metric">99.97%</div>
+                            <div class="outcome-metric">93%</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">System Availability</div>
-                                <div class="outcome-detail">Achieved through combined rules-based automation, predictive monitoring, and resilience testing.</div>
+                                <div class="outcome-title">Faster Model Delivery</div>
+                                <div class="outcome-detail">Model delivery cycle compressed from 3 months to 1 week — unblocking the AI roadmap and accelerating every downstream initiative.</div>
                             </div>
                         </div>
                         <div class="outcome-item">
-                            <div class="outcome-metric">25%</div>
+                            <div class="outcome-metric">3mo→1wk</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Reduction in High-Sev Incidents</div>
-                                <div class="outcome-detail">Proactive chaos testing and automated recovery cut the frequency and impact of critical incidents.</div>
-                            </div>
-                        </div>
-                        <div class="outcome-item">
-                            <div class="outcome-metric">$M+</div>
-                            <div class="outcome-description">
-                                <div class="outcome-title">Strategic Investment Secured</div>
-                                <div class="outcome-detail">Championed and received multi-million-dollar funding for dedicated chaos infrastructure.</div>
+                                <div class="outcome-title">Prototype to Production</div>
+                                <div class="outcome-detail">Data scientists can now take a model from experimentation to production deployment in a single sprint.</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- Project 3: Data Center Intelligence -->
-            <article class="project-card">
+            <!-- ═══ Project 3: Data Center Automation ═══ -->
+            <article class="project-card reveal">
                 <div class="project-header">
-                    <div class="project-header-left">
-                        <div class="project-number">Project 03</div>
-                        <h3 class="project-title">Data Center Intelligence Platform</h3>
-                        <div class="project-meta">Oracle Cloud Infrastructure • 12 weeks launch • Engineering Team</div>
-                    </div>
-                    <div class="project-role-tag">TPM</div>
+                    <div class="project-number">Project 03</div>
+                    <h3 class="project-title">Data Center Automation Toolset</h3>
+                    <div class="project-meta">Oracle Cloud Infrastructure • 12-week launch • Engineering Team</div>
+                    <div class="project-role">TPM</div>
                 </div>
 
                 <div class="project-section">
                     <h4 class="project-section-title">Challenge</h4>
-                    <p class="problem-text">Oracle's global cloud data centers lacked centralized visibility into physical infrastructure health. Temperature spikes and power anomalies went undetected until they caused hardware failures and customer-facing outages—with individual incidents risking millions in revenue loss and SLA penalties.</p>
+                    <p class="problem-text">Global cloud data centers lacked centralized visibility into physical infrastructure health. Temperature spikes and power anomalies went undetected until they caused hardware failures and customer-facing outages—with individual incidents risking millions in revenue loss and SLA penalties. GPU rack density was intensifying thermal and power challenges with no automated tooling to respond.</p>
                 </div>
 
                 <div class="project-section">
@@ -1145,22 +909,22 @@
                         <div class="deliverable-item">
                             <div class="deliverable-icon">🌡️</div>
                             <div class="deliverable-title">Monitoring Service</div>
-                            <div class="deliverable-desc">Launched temperature and power monitoring service in 12 weeks across Oracle's global cloud data centers.</div>
+                            <div class="deliverable-desc">Launched temperature and power monitoring across global data centers in 12 weeks from concept to production.</div>
                         </div>
                         <div class="deliverable-item">
                             <div class="deliverable-icon">🤖</div>
                             <div class="deliverable-title">ML Anomaly Detection</div>
-                            <div class="deliverable-desc">Directed engineering implementation of machine learning-based anomaly detection with heatmap visualization and proximity alarming.</div>
+                            <div class="deliverable-desc">Machine learning-based detection with heatmap visualization and proximity alarming for early intervention.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">📡</div>
-                            <div class="deliverable-title">Consolidated Telemetry System</div>
-                            <div class="deliverable-desc">Integrated multiple data sources into a unified platform, improving accuracy and operational visibility across the global footprint.</div>
+                            <div class="deliverable-icon">⚡</div>
+                            <div class="deliverable-title">Virtual Power Down & GPU Capping</div>
+                            <div class="deliverable-desc">Automated load reduction during thermal events and power capping for GPU racks to prevent cascading failures.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">📊</div>
-                            <div class="deliverable-title">Capacity Forecasting</div>
-                            <div class="deliverable-desc">Built forecasting models for high-profile customers, providing critical data for contract negotiations and resource planning.</div>
+                            <div class="deliverable-icon">📋</div>
+                            <div class="deliverable-title">Workload Priority Visibility</div>
+                            <div class="deliverable-desc">Customer workload priority dashboard enabling intelligent remediation decisions that protect high-value workloads first.</div>
                         </div>
                     </div>
                 </div>
@@ -1169,68 +933,66 @@
                     <h4 class="project-section-title">Impact</h4>
                     <div class="outcomes-list">
                         <div class="outcome-item">
-                            <div class="outcome-metric">50%</div>
+                            <div class="outcome-metric">75%</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Reduction in Data Center Downtime</div>
-                                <div class="outcome-detail">Proactive detection and alerting cut unplanned infrastructure downtime in half.</div>
+                                <div class="outcome-title">Reduction in DC Downtime</div>
+                                <div class="outcome-detail">Proactive detection and automated remediation cut unplanned infrastructure downtime by three-quarters.</div>
                             </div>
                         </div>
                         <div class="outcome-item">
-                            <div class="outcome-metric">$50M</div>
+                            <div class="outcome-metric">$M+</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Annual Revenue Protected</div>
-                                <div class="outcome-detail">Prevented potential revenue loss from undetected physical infrastructure failures.</div>
+                                <div class="outcome-title">Saved Per Incident Prevented</div>
+                                <div class="outcome-detail">Each prevented incident avoids millions in potential revenue loss, SLA penalties, and recovery costs.</div>
                             </div>
                         </div>
                         <div class="outcome-item">
                             <div class="outcome-metric">12 wks</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Rapid Delivery</div>
-                                <div class="outcome-detail">Took the monitoring platform from concept to production launch in under three months.</div>
+                                <div class="outcome-title">Concept to Production</div>
+                                <div class="outcome-detail">Took the monitoring platform from initial concept to production launch in under three months.</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- Project 4: Incident Command & DevOps Transformation -->
-            <article class="project-card">
+            <!-- ═══ Project 4: Chaos Engineering ═══ -->
+            <article class="project-card reveal">
                 <div class="project-header">
-                    <div class="project-header-left">
-                        <div class="project-number">Project 04</div>
-                        <h3 class="project-title">Incident Command & DevOps Transformation</h3>
-                        <div class="project-meta">Oracle Analytics • 12 months • Cross-Functional</div>
-                    </div>
-                    <div class="project-role-tag">Program Manager</div>
+                    <div class="project-number">Project 04</div>
+                    <h3 class="project-title">Chaos Engineering Program</h3>
+                    <div class="project-meta">Oracle SaaS & OCI • 12+ months • Cross-Functional</div>
+                    <div class="project-role">Senior TPM</div>
                 </div>
 
                 <div class="project-section">
                     <h4 class="project-section-title">Challenge</h4>
-                    <p class="problem-text">The Oracle Analytics team faced a growing volume of high-profile customer incidents with no structured response process. Triage was slow, repeat incidents were common, and the patching cycle created unnecessary customer downtime. Product and engineering teams lacked a shared framework for balancing feature work against reliability.</p>
+                    <p class="problem-text">SaaS applications lacked systematic resilience testing. High-severity incidents were increasingly caused by failure modes that only surfaced in production—dependencies failing silently, cascading timeouts, and resource exhaustion under load. Without a structured way to proactively find these weaknesses, the organization was always one step behind the next outage.</p>
                 </div>
 
                 <div class="project-section">
                     <h4 class="project-section-title">What I Delivered</h4>
                     <div class="deliverables-grid">
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">🚨</div>
-                            <div class="deliverable-title">Incident Commander Program</div>
-                            <div class="deliverable-desc">Launched a dedicated Incident Commander DevOps team with structured triage and resolution workflows.</div>
+                            <div class="deliverable-icon">💥</div>
+                            <div class="deliverable-title">Chaos Testing Framework</div>
+                            <div class="deliverable-desc">End-to-end chaos engineering program with structured experiment playbooks and safety guardrails.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">📚</div>
-                            <div class="deliverable-title">Customer-Facing Documentation</div>
-                            <div class="deliverable-desc">Partnered with Product Management to publish guides addressing top incident drivers, enabling customer self-service.</div>
+                            <div class="deliverable-icon">🏗️</div>
+                            <div class="deliverable-title">Dedicated Test Regions (2)</div>
+                            <div class="deliverable-desc">Secured multi-million-dollar investment for two dedicated chaos testing regions, eliminating risk to production.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">🎯</div>
-                            <div class="deliverable-title">Prioritization Model</div>
-                            <div class="deliverable-desc">Designed a framework balancing feature delivery with bug resolution, improving turnaround on critical fixes.</div>
+                            <div class="deliverable-icon">📋</div>
+                            <div class="deliverable-title">Failure Injection Playbooks</div>
+                            <div class="deliverable-desc">Standardized playbooks for dependency failures, cascading timeouts, resource exhaustion, and network partitions.</div>
                         </div>
                         <div class="deliverable-item">
-                            <div class="deliverable-icon">🔄</div>
-                            <div class="deliverable-title">Automated Patching Pipeline</div>
-                            <div class="deliverable-desc">Eliminated customer downtime windows and automated notification workflows, cutting the patching cycle in half.</div>
+                            <div class="deliverable-icon">🛡️</div>
+                            <div class="deliverable-title">Investment Proposal & Strategy</div>
+                            <div class="deliverable-desc">Built the business case and multi-region infrastructure proposal that secured executive-level funding approval.</div>
                         </div>
                     </div>
                 </div>
@@ -1239,80 +1001,30 @@
                     <h4 class="project-section-title">Impact</h4>
                     <div class="outcomes-list">
                         <div class="outcome-item">
-                            <div class="outcome-metric">40%</div>
+                            <div class="outcome-metric">$M+</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Fewer High-Profile Incidents</div>
-                                <div class="outcome-detail">Structured incident response and faster triage drove a dramatic reduction in customer-impacting events.</div>
+                                <div class="outcome-title">Multi-Region Investment Secured</div>
+                                <div class="outcome-detail">Championed and received multi-million-dollar funding for dedicated chaos infrastructure spanning two regions.</div>
                             </div>
                         </div>
                         <div class="outcome-item">
-                            <div class="outcome-metric">50%</div>
+                            <div class="outcome-metric">99.99%</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Faster Patching Cycle</div>
-                                <div class="outcome-detail">Automated patching eliminated downtime windows, improving both velocity and customer experience.</div>
+                                <div class="outcome-title">System Availability Achieved</div>
+                                <div class="outcome-detail">Combined chaos testing, automated recovery, and rules-based automation drove best-in-class availability.</div>
                             </div>
                         </div>
                         <div class="outcome-item">
-                            <div class="outcome-metric">20%</div>
+                            <div class="outcome-metric">25%</div>
                             <div class="outcome-description">
-                                <div class="outcome-title">Reduction in Repeat Incidents</div>
-                                <div class="outcome-detail">Customer-facing documentation addressed root causes, breaking the cycle of recurring issues.</div>
+                                <div class="outcome-title">Fewer High-Severity Incidents</div>
+                                <div class="outcome-detail">Proactive resilience testing and automated failure handling cut the frequency of critical incidents.</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
 
-        </div>
-    </section>
-
-    <!-- Experience Timeline -->
-    <section id="experience" class="timeline">
-        <div class="timeline-container">
-            <div class="section-header">
-                <div class="section-label">Career</div>
-                <h2 class="section-title">Experience</h2>
-                <p class="section-description">Progressive growth from Program Manager to Principal TPM at Oracle.</p>
-            </div>
-
-            <div class="timeline-grid">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Oct 2025 – Present</div>
-                        <div class="timeline-role">Principal Technical Program Manager</div>
-                        <div class="timeline-company">Oracle SaaS</div>
-                        <div class="timeline-desc">Leading TPM and PM functions for a 50+ engineer org with 2 direct reports. Architecting an AI operations platform combining predictive deep learning, autonomous multi-agent systems, and custom LLM capabilities.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Sep 2023 – Sep 2025</div>
-                        <div class="timeline-role">Senior Technical Program Manager</div>
-                        <div class="timeline-company">Oracle SaaS</div>
-                        <div class="timeline-desc">Deployed automated operations engines, deep learning models for predictive health, and championed a multi-million-dollar Chaos Engineering program.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">May 2022 – Sep 2023</div>
-                        <div class="timeline-role">Technical Program Manager</div>
-                        <div class="timeline-company">Oracle Cloud Infrastructure</div>
-                        <div class="timeline-desc">Launched a data center monitoring platform in 12 weeks, directed ML anomaly detection implementation, and built capacity forecasting for top-tier customers.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Mar 2020 – May 2022</div>
-                        <div class="timeline-role">Program Manager</div>
-                        <div class="timeline-company">Oracle Analytics</div>
-                        <div class="timeline-desc">Launched the Incident Commander DevOps team, drove a 40% reduction in high-profile incidents, and cut the patching cycle by 50%.</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1320,62 +1032,62 @@
     <section id="skills" class="skills">
         <div class="skills-container">
             <div class="section-header">
-                <div class="section-label">Expertise</div>
-                <h2 class="section-title">Skills & Capabilities</h2>
+                <div class="section-label">What I Bring</div>
+                <h2 class="section-title">Not Your Typical TPM</h2>
             </div>
 
             <div class="skills-grid">
                 <div class="skill-category">
-                    <div class="skill-category-icon">🧠</div>
-                    <h3 class="skill-category-title">AI & Machine Learning</h3>
+                    <div class="skill-icon">🧠</div>
+                    <h3 class="skill-category-title">I Build AI Systems</h3>
+                    <p class="skill-proof">Designed multi-agent architectures, custom LLM pipelines (RAG/SFT/CPT), and ML infrastructure from datalake to production serving. I speak the language of the engineers building the models.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">NLP</span>
-                        <span class="skill-tag">Anomaly Detection</span>
-                        <span class="skill-tag">RAG / SFT / CPT</span>
                         <span class="skill-tag">Multi-Agent Systems</span>
-                        <span class="skill-tag">Predictive Modeling</span>
-                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">RAG / SFT / CPT</span>
+                        <span class="skill-tag">Anomaly Detection</span>
+                        <span class="skill-tag">Feature Stores</span>
+                        <span class="skill-tag">NLP</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <div class="skill-category-icon">⚙️</div>
-                    <h3 class="skill-category-title">Program Management</h3>
+                    <div class="skill-icon">🚀</div>
+                    <h3 class="skill-category-title">I Ship Fast at Scale</h3>
+                    <p class="skill-proof">12-week launches, 93% faster model delivery, multi-million-dollar investment proposals approved. I run programs that move at startup speed inside enterprise environments.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Agile/Scrum</span>
-                        <span class="skill-tag">Roadmap Strategy</span>
                         <span class="skill-tag">Cross-Functional Leadership</span>
+                        <span class="skill-tag">Roadmap Strategy</span>
                         <span class="skill-tag">Executive Communication</span>
-                        <span class="skill-tag">Risk Management</span>
-                        <span class="skill-tag">Stakeholder Alignment</span>
+                        <span class="skill-tag">Agile/Scrum</span>
+                        <span class="skill-tag">OKRs</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <div class="skill-category-icon">💻</div>
-                    <h3 class="skill-category-title">Technical</h3>
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-category-title">I Go Deep Technically</h3>
+                    <p class="skill-proof">Python, SQL, system design reviews, CI/CD pipelines, cloud infrastructure. I can read the code, review the architecture, and debug the pipeline — not just track the Jira tickets.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">System Design</span>
                         <span class="skill-tag">Cloud Infrastructure</span>
-                        <span class="skill-tag">Chaos Engineering</span>
-                        <span class="skill-tag">Graph-Based RCA</span>
-                        <span class="skill-tag">MCP Servers</span>
+                        <span class="skill-tag">Apache Kafka</span>
+                        <span class="skill-tag">CI/CD</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <div class="skill-category-icon">🛠️</div>
-                    <h3 class="skill-category-title">Tools & Platforms</h3>
+                    <div class="skill-icon">🛠️</div>
+                    <h3 class="skill-category-title">I Make Reliability a Feature</h3>
+                    <p class="skill-proof">Chaos engineering programs, automated incident remediation, 99.99% availability. I treat production reliability as a first-class product — not an afterthought.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Jira</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Whimsical</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Oracle Analytics</span>
-                        <span class="skill-tag">OCI</span>
+                        <span class="skill-tag">Chaos Engineering</span>
+                        <span class="skill-tag">Incident Management</span>
+                        <span class="skill-tag">SRE Practices</span>
+                        <span class="skill-tag">Observability</span>
+                        <span class="skill-tag">Auto-Remediation</span>
                     </div>
                 </div>
             </div>
@@ -1386,8 +1098,7 @@
     <section id="contact" class="contact">
         <div class="contact-container">
             <h2 class="contact-title">Let's build what's next</h2>
-            <p class="contact-text">I'm exploring opportunities to help companies accelerate their AI journey. If you need a TPM who combines deep AI/ML fluency with disciplined program execution, let's connect.</p>
-
+            <p class="contact-text">I'm exploring opportunities where AI and ML programs need to move fast and ship reliably. If you're looking for a TPM who can take complex AI initiatives from strategy through production, let's connect.</p>
             <div class="contact-links">
                 <a href="mailto:colt23x@gmail.com" class="contact-link">
                     <span>📧</span>
@@ -1397,16 +1108,13 @@
                     <span>💼</span>
                     <span>LinkedIn</span>
                 </a>
-                <a href="tel:+14155999957" class="contact-link">
-                    <span>📱</span>
-                    <span>415-599-9957</span>
-                </a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>© 2026 Colton Wirth. Built to showcase strategic program management.</p>
+        <p>&copy; 2026 Colton Wirth. Built to showcase strategic program management.</p>
     </footer>
 
     <script>
@@ -1421,24 +1129,16 @@
             });
         });
 
-        // Intersection Observer for fade-in
-        const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -40px 0px' };
-
+        // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.project-card, .skill-category, .timeline-item').forEach((el, i) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(25px)';
-            el.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${i * 0.08}s`;
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
