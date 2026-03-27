@@ -19,4 +19,4 @@ I sit at the intersection of technical depth and program execution. I can review
 
 **Email:** colt23x@gmail.com
 **LinkedIn:** [linkedin.com/in/coltonwirth](https://linkedin.com/in/coltonwirth)
-**Portfolio:** [colt23x.github.io/coltonwirth.github.io](https://colt23x.github.io/coltonwirth.github.io/)
+**Portfolio:** [colt23x.github.io/portfolio/](https://colt23x.github.io/portfolio/)
